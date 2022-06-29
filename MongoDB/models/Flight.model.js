@@ -6,34 +6,82 @@ const flightSchema = new Schema({
         required: true,
         type: String
     }, 
-    departureDate: [{
-        day: String,
-        month: String,
-        year: String 
-    }],
-    arrivalDate: [{
-        day: String,
-        month: String,
-        year: String 
-    }],
-    departureTime: [{
-        hour: String,
-        minute: String,
-        isBeforeMidday: Boolean
-    }],
-    arrivalTime: [{
-        hour: String,
-        minute: String,
-        isBeforeMidday: Boolean
-    }], 
-    departureAirport: [{
-        airportName: String,
-        airportTag: String
-    }],
-    arrivalAirport: [{
-        airportName: String,
-        airportTag: String
-    }],
+    departureDate: {
+        day: {
+            required: true,
+            type: String
+        },
+        month: {
+            required: true,
+            type: String
+        },
+        year: {
+            required: true,
+            type: String
+        }
+    },
+    arrivalDate: {
+        day: {
+            required: true,
+            type: String
+        },
+        month: {
+            required: true,
+            type: String
+        },
+        year: {
+            required: true,
+            type: String
+        }
+    },
+    departureTime: {
+        hour: {
+            required: true,
+            type: String
+        },
+        minute: {
+            required: true,
+            type: String
+        },
+        isBeforeMidday: {
+            required: true,
+            type: Boolean
+        }
+    },
+    arrivalTime: {
+        hour: {
+            required: true,
+            type: String
+        },
+        minute: {
+            required: true,
+            type: String
+        },
+        isBeforeMidday: {
+            required: true,
+            type: Boolean
+        }
+    }, 
+    departureAirport: {
+        airportName: {
+            required: true,
+            type: String
+        },
+        airportTag: {
+            required: true,
+            type: String
+        }
+    },
+    arrivalAirport: {
+        airportName: {
+            required: true,
+            type: String
+        },
+        airportTag: {
+            required: true,
+            type: String
+        }
+    },
     passengerCount: {
         required: true,
         type: String

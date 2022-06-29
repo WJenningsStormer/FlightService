@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const logger = require('./middleware/logger');
 require('dotenv').config();
 const cors = require('cors');
 
@@ -8,6 +9,7 @@ const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
 app.use(cors());
+app.use(logger);
 
 app.use('/flights', require('./routes/flight.route'));
 
