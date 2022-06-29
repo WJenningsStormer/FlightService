@@ -13,7 +13,7 @@ export const FlightList = () => {
 
     return (
         <div>
-            <div>this is displayed, right?</div>
+            <div>{flights}</div>
             {flights.map((currFlight, index) => {
                 return (
                     <div> <div>this is displayed</div>
