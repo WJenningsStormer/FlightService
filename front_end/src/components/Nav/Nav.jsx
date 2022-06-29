@@ -8,3 +8,11 @@ export const Nav = styled.nav`
     display: flex;
     justify-content: space-between;
 `;
+
+// export const Nav = ({children}) => {
+//     return (
+//         <nav>
+//             {children}
+//         </nav>
+//     );
+// }

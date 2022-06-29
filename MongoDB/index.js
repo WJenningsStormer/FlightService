@@ -19,6 +19,11 @@ mongoose.connect(process.env.MONGO_URI)
         console.error(err);
         process.exit(1);
     });
+const conn = mongoose.connection;
+
+conn.on('disconnected', () => {
+    console.log('Database is disconnected successfully.')
+})
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}!`);

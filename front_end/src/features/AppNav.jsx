@@ -12,7 +12,7 @@ export const AppNav = () => {
     return (
         <Nav backgroundColor={theme.backgroundColor} color={theme.color}>
             <NavSection jc="flex-start">
-                <NavItem>
+            <NavItem>
                     <NavLink to="/">Home</NavLink>
                 </NavItem>
                 <NavItem>
