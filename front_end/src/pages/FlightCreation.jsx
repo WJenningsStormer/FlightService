@@ -1,7 +1,9 @@
+import { AddFlight } from "../components/AddFlight";
+
 export const FlightCreation = () => {
     return ( 
         <>
-            <p>Please display</p>
+            <AddFlight />
         </>
     )
 }
