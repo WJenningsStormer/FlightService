@@ -21,27 +21,6 @@ const createFlight = async ({flightNumber, departureNumber, arrivalDate, departu
     }
 }
 
-const addAirportToFlightDeparture = async (_id, { airportName, airportTag, _id: airportId }) => {
-    try {
-        // Pushes onto the array for the field 'airport', a new object containing airport name, airport shorthand tag, and airportId
-        await Flight.findByIdAndUpdate(_id, { $push: { departureAirport: { airportName, airportTag, _id: airportId } } });
-    } catch (err) {
-        console.error(err);
-        throw { status: 400, message: err };
-    }
-}
-
-const addAirportToFlightArrival = async (_id, { airportName, airportTag, _id: airportId }) => {
-    try {
-        // Pushes onto the array for the field 'airport', a new object containing airport name, airport shorthand tag, and airportId
-        await Flight.findByIdAndUpdate(_id, { $push: { arrivalAirport: { airportName, airportTag, _id: airportId } } });
-    } catch (err) {
-        console.error(err);
-        throw { status: 400, message: err };
-    }
-}
-
-
 const findFlightById = async id => {
     try {
         const flight = await Flight.findById(id);
@@ -59,4 +38,12 @@ const findAllFlights = async () => {
     return flights;
 }
 
-module.exports = { createFlight, findFlightById, addAirportToFlightDeparture, addAirportToFlightArrival, findAllFlights };
+const updateFlight = async () => {
+
+}
+
+const deleteFlight = async () => {
+    
+}
+
+module.exports = { createFlight, findFlightById, findAllFlights, updateFlight, deleteFlight };

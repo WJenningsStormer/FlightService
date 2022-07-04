@@ -1,9 +1,11 @@
 import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './AddFlight.css';
 import axios from 'axios';
 
 export const AddFlight = () => {
-    constructor
+    //this.handleSubmit.bind(this);
+
     const FlightNumberRef = useRef();
     const DepartureDateRef = useRef([]);
     const ArrivalDateRef = useRef([]);
@@ -40,7 +42,7 @@ export const AddFlight = () => {
                 <label htmlFor="FlightNumber">Flight Number</label><div><input type = "text" id="FlightNumber" ref={FlightNumberRef}/></div>
 
                 <label>Departure Date</label>
-                <div><label>Day: </label><select type="text" value={DepartureDateRef[0]}>
+                <div><label>(dd/mm/yyyy):  </label><select type="text" value={DepartureDateRef[0]}>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -72,9 +74,7 @@ export const AddFlight = () => {
                     <option value="29">29</option>
                     <option value="30">30</option>
                     <option value="31">31</option>
-                    
-                </select></div>
-                <div><label>Month: </label><select type = "text" value={DepartureDateRef[1]}>
+                </select><label>/</label><select type = "text" value={DepartureDateRef[1]}>
                 <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -87,8 +87,7 @@ export const AddFlight = () => {
                     <option value="10">10</option>
                     <option value="11">11</option>
                     <option value="12">12</option>
-                </select></div>
-                <div><label>Year: </label><select type = "boolean" value={DepartureDateRef[2]}>
+                </select><label>/</label><select type = "boolean" value={DepartureDateRef[2]}>
                     <option value="2022">2022</option>
                     <option value="2023">2023</option>
                     <option value="2024">2024</option>
@@ -96,7 +95,7 @@ export const AddFlight = () => {
                 </select></div>
                 
                 <label>Arrival Date</label>
-                <div><label>Day: </label><select type = "text" value={ArrivalDateRef[0]}>
+                <div><label>(dd/mm/yyyy):  </label><select type = "text" value={ArrivalDateRef[0]}>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -128,9 +127,7 @@ export const AddFlight = () => {
                     <option value="29">29</option>
                     <option value="30">30</option>
                     <option value="31">31</option>
-                    
-                </select></div>
-                <div><label>Month: </label><select type = "text" value={ArrivalDateRef[1]}>
+                </select><label>/</label><select type = "text" value={ArrivalDateRef[1]}>
                 <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -143,8 +140,7 @@ export const AddFlight = () => {
                     <option value="10">10</option>
                     <option value="11">11</option>
                     <option value="12">12</option>
-                </select></div>
-                <div><label>Year: </label><select type = "boolean" value={ArrivalDateRef[2]}>
+                </select><label>/</label><select type = "boolean" value={ArrivalDateRef[2]}>
                     <option value="2022">2022</option>
                     <option value="2023">2023</option>
                     <option value="2024">2024</option>
@@ -152,7 +148,7 @@ export const AddFlight = () => {
                 </select></div>
 
                 <label>Departure Time</label>
-                <div><label>Hour: </label><select type = "text" value={DepartureTimeRef[0]}>
+                <div><label></label><select type = "text" value={DepartureTimeRef[0]}>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -165,20 +161,18 @@ export const AddFlight = () => {
                     <option value="10">10</option>
                     <option value="11">11</option>
                     <option value="12">12</option>
-                </select></div>
-                <div><label>Minute: </label><select type = "text" value={DepartureTimeRef[1]}>
+                </select><label></label><select type = "text" value={DepartureTimeRef[1]}>
                     <option value="00">00</option>
                     <option value="15">15</option>
                     <option value="30">30</option>
                     <option value="45">45</option>
-                </select></div>
-                <div><select type = "boolean" value={DepartureTimeRef[2]}>
+                </select><select type = "boolean" value={DepartureTimeRef[2]}>
                     <option value={true}>A.M.</option>
                     <option value={false}>P.M.</option>
                 </select></div>
 
                 <label>Arrival Time</label>
-                <div><label>Hour: </label><select type = "text" value={ArrivalTimeRef[0]}>
+                <div><label></label><select type = "text" value={ArrivalTimeRef[0]}>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -191,14 +185,12 @@ export const AddFlight = () => {
                     <option value="10">10</option>
                     <option value="11">11</option>
                     <option value="12">12</option>
-                </select></div>
-                <div><label>Minute: </label><select type = "text" value={ArrivalTimeRef[1]}>
+                </select><label></label><select type = "text" value={ArrivalTimeRef[1]}>
                     <option value="00">00</option>
                     <option value="15">15</option>
                     <option value="30">30</option>
                     <option value="45">45</option>
-                </select></div>
-                <div><select type = "boolean" value={ArrivalTimeRef[2]}>
+                </select><select type = "boolean" value={ArrivalTimeRef[2]}>
                     <option value={true}>A.M.</option>
                     <option value={false}>P.M.</option>
                 </select></div>
@@ -212,7 +204,7 @@ export const AddFlight = () => {
                 <label htmlFor="PassengersCount">Number of Passengers</label><div><input type = "text" id="PassengersCount" ref={PassengerCountRef}/></div>
                 <label htmlFor="PassengersLimit">Limit Of Passengers</label><div><input type = "text" id="PassengersLimit" ref={PassengerLimitRef}/></div>
                 
-                <button onClick={handleSubmit}>Submit</button>
+                <button1 onClick={handleSubmit}>Submit</button1>
             </div>
     )
 }

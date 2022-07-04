@@ -4,6 +4,7 @@ import { AppNav } from './features';
 import { Landing,  FlightCreation, FlightSearch, Error } from './pages';
 import { ActorForm } from './components/ActorForm';
 import ThemeContext, { themes } from './contexts/ThemeContext';
+import "./App.css";
 
 // React function based component
 
@@ -26,7 +27,7 @@ const App = () => {
             {/* Everything in here is going to managed by react-router-dom so that it can toggle between pages */}
             <BrowserRouter>
             <AppNav />
-                <button onClick={toggleTheme}>Toggle Theme</button>
+                {/*<button onClick={toggleTheme}>Toggle Theme</button>*/}
                 <Routes>
                     {/* When the URL in the browser becomes /, toggle on the Landing page */}
                     <Route path="/" element={<Landing />} />

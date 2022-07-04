@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { createFlight, findFlightById, findAllFlights } = require('../controllers/flight.controller');
+const { createFlight, findFlightById, findAllFlights, deleteFlight, updateFlight} = require('../controllers/flight.controller');
 
 router.get('/', async (req, res) => {
     const flights = await findAllFlights();
@@ -21,6 +21,24 @@ router.get('/:id', async (req, res) => {
         res.json(flight);
     } catch (err) {
         res.status(err?.status || 400).json(err);
+    }
+})
+
+router.delete("/:id", async (req, res) => {
+    try {
+        await deleteFlight(req.params.id);
+        res.status(201).json(`Flight with flight number ${req.params.id}`);
+    } catch (err) {
+        res.status(err?.status || 500).json(err);
+    }
+})
+
+router.update("/:id", async (req, res) => {
+    try {
+        await updateFlight(req.params.id);
+        res.status(201).json(`Flight with flight number ${req.params.id}`);
+    } catch (err) {
+        res.status(err?.status || 500).json(err);
     }
 })
 
