@@ -33,13 +33,13 @@ router.delete("/:id", async (req, res) => {
     }
 })
 
-router.update("/:id", async (req, res) => {
-    try {
-        await updateFlight(req.params.id);
-        res.status(201).json(`Flight with flight number ${req.params.id}`);
-    } catch (err) {
-        res.status(err?.status || 500).json(err);
-    }
-})
+// router.update("/:id", async (req, res) => {
+//     try {
+//         await updateFlight(req.params.id);
+//         res.status(201).json(`Flight with flight number ${req.params.id}`);
+//     } catch (err) {
+//         res.status(err?.status || 500).json(err);
+//     }
+// })
 
 module.exports = router;

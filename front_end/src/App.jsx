@@ -11,10 +11,12 @@ import "./App.css";
 const App = () => {
     // Whatever is returned from these functions will be what is rendered
 
-    const [currTheme, setCurrTheme] = useState(themes.light);
+    const [currTheme, setCurrTheme] = useState(themes.darkGray);
 
     const toggleTheme = () => {
         if (currTheme === themes.light) {
+            setCurrTheme(themes.darkGray);
+        } else if (currTheme === themes.darkGray) {
             setCurrTheme(themes.dark);
         } else {
             setCurrTheme(themes.light);
@@ -24,10 +26,11 @@ const App = () => {
     return (
         // This wraps all of its children in the context, all children can read from it
         <ThemeContext.Provider value={currTheme}>
+            <style>{"body { background-color: navy; }"}</style>
             {/* Everything in here is going to managed by react-router-dom so that it can toggle between pages */}
             <BrowserRouter>
             <AppNav />
-                {/*<button onClick={toggleTheme}>Toggle Theme</button>*/}
+                <header>Current Flights:</header>
                 <Routes>
                     {/* When the URL in the browser becomes /, toggle on the Landing page */}
                     <Route path="/" element={<Landing />} />
