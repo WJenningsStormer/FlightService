@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AppNav } from './features';
-import { Landing,  FlightCreation, FlightSearch, Error } from './pages';
+import { Landing,  FlightCreation, FlightSearch, EditFlightPage, Error } from './pages';
 import { ActorForm } from './components/ActorForm';
 import ThemeContext, { themes } from './contexts/ThemeContext';
 import "./App.css";
@@ -26,16 +26,16 @@ const App = () => {
     return (
         // This wraps all of its children in the context, all children can read from it
         <ThemeContext.Provider value={currTheme}>
-            <style>{"body { background-color: navy; }"}</style>
+            <style>{"body { background-color: rgb(241, 239, 239); }"}</style>
             {/* Everything in here is going to managed by react-router-dom so that it can toggle between pages */}
             <BrowserRouter>
             <AppNav />
-                <header>Current Flights:</header>
                 <Routes>
                     {/* When the URL in the browser becomes /, toggle on the Landing page */}
-                    <Route path="/" element={<Landing />} />
+                    <Route path="/" element={<div><header>Flight Service</header> <Landing /> </div>} />
                     <Route path="/creation" element={<FlightCreation />} />
                     <Route path="/search" element={<FlightSearch />} />
+                    <Route path="/edit" element={<EditFlightPage />} />
                     <Route path="*" element={<Error />} />
                 </Routes>
             </BrowserRouter>

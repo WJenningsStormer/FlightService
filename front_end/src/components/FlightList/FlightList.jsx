@@ -26,14 +26,12 @@ export const FlightList = () => {
                             <div style={{float: "left", marginRight: '10px'}}>
                                 <Form.Group className="mb-3" controlId="formDepartureInfo">
                                     <Form.Label>Departure Date & Time: </Form.Label>
-                                    <text><br></br>{flight.departureDate.day}/{flight.departureDate.month}/{flight.departureDate.year}</text>
-                                    <text> {flight.departureTime.hour}:{flight.departureTime.minute} {(flight.departureTime.isBeforeMidday) ? 'A.M.' : 'P.M.'}</text>
+                                    <text><br></br>{flight.departureDate}  @  {flight.departureTime}</text>
                                 </Form.Group>
 
                                 <Form.Group className="mb-3" controlId="formArrivalInfo">
                                     <Form.Label>Arrival Date & Time: </Form.Label>
-                                    <text><br></br>{flight.arrivalDate.day}/{flight.arrivalDate.month}/{flight.arrivalDate.year}</text>
-                                    <text> {flight.arrivalTime.hour}:{flight.arrivalTime.minute} {(flight.arrivalTime.isBeforeMidday) ? 'A.M.' : 'P.M.'}</text>
+                                    <text><br></br>{flight.arrivalDate}  @  {flight.arrivalTime}</text>
                                 </Form.Group>
 
                                 <Form.Group className="mb-3" controlId="formPassengerLimit">
@@ -44,12 +42,12 @@ export const FlightList = () => {
 
                             <Form.Group className="mb-3" controlId="formDepAirportInfo">
                                 <Form.Label>Departure Airport: </Form.Label>
-                                <text>{flight.departureAirport.airportTag}</text>
+                                <text>{flight.departureAirport}</text>
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formArrAirportInfo">
                                 <Form.Label><br></br>Arrival Airport: </Form.Label>
-                                <text>{flight.arrivalAirport.airportTag}</text>
+                                <text>{flight.arrivalAirport}</text>
                             </Form.Group>
                         
                             <Form.Group className="mb-3" controlId="formPassengerLimit">

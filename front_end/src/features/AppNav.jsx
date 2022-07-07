@@ -21,6 +21,9 @@ export const AppNav = () => {
                 <NavItem>
                     <NavLink to="/search">Flight Search</NavLink>
                 </NavItem>
+                <NavItem>
+                    <NavLink to="/edit">Edit Flight</NavLink>
+                </NavItem>
             </NavSection>
         </Nav>
     );

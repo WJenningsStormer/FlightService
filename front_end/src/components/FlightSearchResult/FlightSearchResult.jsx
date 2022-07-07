@@ -1,65 +1,105 @@
 import { useRef, useEffect, useState } from 'react';
-import { AddFlight } from "../AddFlight";
-import styles from './FlightSearchResult.css';
+import { Form } from 'react-bootstrap';
+import { Center } from "../StylePractice";
+import { useNavigate } from 'react-router-dom';
+import './FlightSearchResult.css';
 import axios from 'axios';
 
 export const FlightSearchResult = () => {
     //this.onSearch.bind(this);
     //this.displayFlight.bind(this);
 
-    const FlightNumberRef = useRef("BA5680");
-    console.log(FlightNumberRef.value);
+    const FlightNumberRef = useRef();
     const [flight, setFlight] = useState();
+    const navigate = useNavigate();
 
-    const searchForFlight = () => {
-        console.log(FlightNumberRef.current.value);
-        axios.get(`http://localhost:8085/flights/${FlightNumberRef.current.value}`)
-        .then(res => setFlight(res.data));
+    const searchForFlight = async () => {
+        let currFlightNumber = FlightNumberRef.current.value;
+
+        try {
+            if( currFlightNumber !== "") {
+                axios.get(`http://localhost:8085/flights/${currFlightNumber}`)
+                .then(res => setFlight(res.data));
+            } else {
+                setFlight();
+                alert("Please enter a flight number to search!");
+            }
+        } catch (err) {
+            setFlight();
+            alert(err.response.data.message);
+        } finally {
+            FlightNumberRef.current.value = null;
+        }
     }
 
-    const onSearch = e => {
+    const onSearch = async e => {
         e.preventDefault();
         searchForFlight();
-        displayFlight();
-    }
-    
-    const displayFlight = () => {
-        searchForFlight();
-        return (
-            <divcard>
-                <div><strong>Flight Number: </strong>{flight.flightNumber}</div>
-                <div><strong>Departure Date: </strong>{flight.departureDate.day}/{flight.departureDate.month}/{flight.departureDate.year}</div>
-                <div><strong>Arrival Date: </strong>{flight.arrivalDate.day}/{flight.arrivalDate.month}/{flight.arrivalDate.year}</div>
-                <div><strong>Departure Time: </strong>{flight.departureTime.hour}:{flight.departureTime.minute} {(flight.departureTime.isBeforeMidday) ? 'A.M.' : 'P.M.'}</div>
-                <div><strong>Arrival Time: </strong>{flight.arrivalTime.hour}:{flight.arrivalTime.minute} {(flight.arrivalTime.isBeforeMidday) ? 'A.M.' : 'P.M.'}</div>
-                <div><strong>Departure Airport: </strong>{flight.departureAirport.airportName} {flight.departureAirport.airportTag}</div>
-                <div><strong>Arrival Airport: </strong>{flight.arrivalAirport.airportName} {flight.arrivalAirport.airportTag}</div>
-                <div><strong>Number of Passengers: </strong>{flight.passengerCount}</div>
-            </divcard>
-        )
     }
 
-    const editFlight = () => {
-        return(
-            <div>
-                <AddFlight />
-            </div>
-        )
-    }
-
-    const deleteFlight = () => {
-        //axios.get(`http://localhost:8085/flights/${flightNumber}`)
-        //.then(res => setFlight(res.data));
+    const deleteFlight = async () => {
+        try {
+            console.log(flight.flightNumber);
+            await axios.delete(`http://localhost:8085/flights/${flight.flightNumber}`)
+            .then(res => console.log(res.status));
+            navigate('./', {replace: true});
+        } catch (err) {
+            alert(err.response.data.message);
+        }
     }
 
     return(
         <div>
-            <label1>Flight Number</label1>
-            <div><input type="text" ref={FlightNumberRef}/></div>
-            <button onClick={displayFlight}>Search</button>
-            <div>Flight: </div>
-            <button onClick={editFlight}>Edit Flight</button>
-            <button onClick={deleteFlight}>Delete Flight</button>
+            
+            <header> 
+                    <label>Flight Number</label>
+                    <div><input type="text" ref={FlightNumberRef}/></div>
+                    <button onClick={onSearch}>Search</button>
+            </header>
+            <Center>
+                {flight && <Form>
+                    <div key={flight._id}>
+                        <Form.Group float="left" className="mb-3" controlId="formFlightNumber">
+                            <Form.Label>Flight Number: </Form.Label>
+                            <text>{flight.flightNumber}</text>
+                        </Form.Group>
+
+                        <div style={{float: "left", marginRight: '10px'}}>
+                            <Form.Group className="mb-3" controlId="formDepartureInfo">
+                                <Form.Label>Departure Date & Time: </Form.Label>
+                                <text><br></br>{flight.departureDate}  @  {flight.departureTime}</text>
+                            </Form.Group>
+
+                            <Form.Group className="mb-3" controlId="formArrivalInfo">
+                                <Form.Label>Arrival Date & Time: </Form.Label>
+                                <text><br></br>{flight.arrivalDate}  @  {flight.arrivalTime}</text>
+                            </Form.Group>
+
+                            <Form.Group className="mb-3" controlId="formPassengerLimit">
+                                <Form.Label> Passenger Count: </Form.Label>
+                                <text>{flight.passengerCount}</text>
+                            </Form.Group>
+                        </div>
+
+                        <Form.Group className="mb-3" controlId="formDepAirportInfo">
+                            <Form.Label>Departure Airport: </Form.Label>
+                            <text>{flight.departureAirport}</text>
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formArrAirportInfo">
+                            <Form.Label><br></br>Arrival Airport: </Form.Label>
+                            <text>{flight.arrivalAirport}</text>
+                        </Form.Group>
+                    
+                        <Form.Group className="mb-3" controlId="formPassengerLimit">
+                            <Form.Label><br></br> Passenger Limit: </Form.Label>
+                            <text>{flight.passengerLimit}</text>
+                        </Form.Group>
+
+                        <button onClick={deleteFlight}>Delete Flight</button>
+                    </div>
+                </Form>}
+            </Center>
         </div>
     )
 }
