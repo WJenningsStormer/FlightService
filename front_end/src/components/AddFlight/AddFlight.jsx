@@ -68,22 +68,22 @@ export const AddFlight = () => {
                 <header>New Flight</header>
                 <Center>
                     <Form>
-                        <label>Flight Number</label><div><input type = "text" id="FlightNumber" ref={FlightNumberRef}/></div>
+                        <label>Flight Number: </label><div><input type = "text" id="FlightNumber" ref={FlightNumberRef}/></div>
 
-                        <label>Departure Date</label><div><input type = "text" id="DepartureDate" ref={DepartureDateRef}/></div>
+                        <label>Departure Date: </label><div><input type = "text" id="DepartureDate" ref={DepartureDateRef}/></div>
 
-                        <label>Arrival Date</label><div><input type = "text" id="ArrivalDate" ref={ArrivalDateRef}/></div>
+                        <label>Arrival Date: </label><div><input type = "text" id="ArrivalDate" ref={ArrivalDateRef}/></div>
 
-                        <label>Departure Time</label><div><input type = "text" id="DepartureTime" ref={DepartureTimeRef}/></div>
+                        <label>Departure Time: </label><div><input type = "text" id="DepartureTime" ref={DepartureTimeRef}/></div>
                         
-                        <label>Arrival Time</label><div><input type = "text" id="ArrivalTime" ref={ArrivalTimeRef}/></div>
+                        <label>Arrival Time: </label><div><input type = "text" id="ArrivalTime" ref={ArrivalTimeRef}/></div>
                         
-                        <label htmlFor="DepartureAirportName">Departure Airport</label><div><input type = "text" id="DepartureAirport" ref={DepartureAirportRef}/></div>
+                        <label htmlFor="DepartureAirportName">Departure Airport: </label><div><input type = "text" id="DepartureAirport" ref={DepartureAirportRef}/></div>
 
-                        <label htmlFor="ArrivalAirportName">Arrival Airport</label><div><input type = "text" id="ArrivalAirport" ref={ArrivalAirportRef}/></div>
+                        <label htmlFor="ArrivalAirportName">Arrival Airport: </label><div><input type = "text" id="ArrivalAirport" ref={ArrivalAirportRef}/></div>
 
-                        <label htmlFor="PassengersCount">Number of Passengers</label><div><input type = "text" id="PassengersCount" ref={PassengerCountRef}/></div>
-                        <label htmlFor="PassengersLimit">Limit Of Passengers</label><div><input type = "text" id="PassengersLimit" ref={PassengerLimitRef}/></div>
+                        <label htmlFor="PassengersCount">Number of Passengers: </label><div><input type = "text" id="PassengersCount" ref={PassengerCountRef}/></div>
+                        <label htmlFor="PassengersLimit">Limit Of Passengers: </label><div><input type = "text" id="PassengersLimit" ref={PassengerLimitRef}/></div>
                         
                         <button onClick={handleSubmit}>Submit</button>
                     </Form>

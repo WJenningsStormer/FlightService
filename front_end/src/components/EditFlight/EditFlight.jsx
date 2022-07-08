@@ -91,7 +91,7 @@ export const EditFlight = () => {
             <header>Edit Flight</header>
             <Center>
                 <Form>
-                    <label>Flight Number</label><div><input type = "text" id="FlightNumber" ref={FlightNumberRef}/></div>
+                    <label>Flight Number: </label><div><input type = "text" id="FlightNumber" ref={FlightNumberRef}/></div>
 
                     {!flight && 
                     <button onClick={autoPopulate}>Search</button>}
