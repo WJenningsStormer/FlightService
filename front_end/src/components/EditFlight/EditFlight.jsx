@@ -88,6 +88,7 @@ export const EditFlight = () => {
 
     return(
         <div>
+            <header>Edit Flight</header>
             <Center>
                 <Form>
                     <label>Flight Number</label><div><input type = "text" id="FlightNumber" ref={FlightNumberRef}/></div>

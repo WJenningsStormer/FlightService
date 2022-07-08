@@ -26,13 +26,13 @@ const App = () => {
     return (
         // This wraps all of its children in the context, all children can read from it
         <ThemeContext.Provider value={currTheme}>
-            <style>{"body { background-color: rgb(241, 239, 239); }"}</style>
+            <style>{"body { background-color: #1F2833; }"}</style>
             {/* Everything in here is going to managed by react-router-dom so that it can toggle between pages */}
             <BrowserRouter>
             <AppNav />
                 <Routes>
                     {/* When the URL in the browser becomes /, toggle on the Landing page */}
-                    <Route path="/" element={<div><header>Flight Service</header> <Landing /> </div>} />
+                    <Route path="/" element={<div><header>Existing Scheduled Flights</header> <Landing /> </div>} />
                     <Route path="/creation" element={<FlightCreation />} />
                     <Route path="/search" element={<FlightSearch />} />
                     <Route path="/edit" element={<EditFlightPage />} />

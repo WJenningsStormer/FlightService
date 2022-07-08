@@ -1,5 +1,7 @@
 import { useContext } from 'react';
 import { useSelector } from 'react-redux';
+import logo from './AirInnovations.ico';
+import slogan from './SloganImg.ico';
 import ThemeContext from '../contexts/ThemeContext';
 import { Nav, NavItem, NavLink, NavSection } from '../components/Nav';
 
@@ -10,9 +12,9 @@ export const AppNav = () => {
     const { username } = useSelector(store => store);
 
     return (
-        <Nav backgroundColor={theme.backgroundColor} color={theme.color}>
+        <Nav backgroundColor={'#0B0C10'} color={theme.color} fontFamily={'Trebuchet MS, Helvetica, sans-serif'}>
             <NavSection jc="flex-start">
-            <NavItem>
+                <NavItem>
                     <NavLink to="/">Home</NavLink>
                 </NavItem>
                 <NavItem>

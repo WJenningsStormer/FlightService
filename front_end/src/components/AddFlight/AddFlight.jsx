@@ -65,6 +65,7 @@ export const AddFlight = () => {
 
     return(
             <div>
+                <header>New Flight</header>
                 <Center>
                     <Form>
                         <label>Flight Number</label><div><input type = "text" id="FlightNumber" ref={FlightNumberRef}/></div>

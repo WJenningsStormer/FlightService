@@ -1,8 +1,5 @@
-div1 {
-    background-color: beige;
-}
 Form {
-    background-color: rgb(255, 255, 255);
+    background-color: #C5C6C7;
     padding: 40px 60px;
     border: 2px solid black;
     border-radius: 48px;
@@ -14,9 +11,10 @@ Form {
 Form Label {
     font-family: verdana;
     font-weight: bold;
-    font-size: 100%;
+    font-size: 150%;
 }
 text {
     font-family: verdana;
-    font-size: 100%;
+    font-size: 150%;
 }
+
